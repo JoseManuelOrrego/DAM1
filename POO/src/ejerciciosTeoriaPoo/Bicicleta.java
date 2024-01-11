@@ -1,24 +1,15 @@
 package ejerciciosTeoriaPoo;
 
-public class Bicicleta 
+public class Bicicleta extends Vehiculo
 {
-	protected int velocidadActual;
-	protected int platoActual;
 	protected int pinnonActual;
 	
 	public Bicicleta(int velocidadActual, int platoActual, int pinnonActual)
 	{
-		this.velocidadActual = velocidadActual;
-		this.platoActual = platoActual;
+		super(velocidadActual,platoActual);
 		this.pinnonActual = pinnonActual;
 	}
 	
-	public Bicicleta()
-	{
-		velocidadActual = 0;
-		platoActual = 1;
-		pinnonActual = 1;
-	}
 
 	public int getVelocidad()
 	{
@@ -57,19 +48,9 @@ public class Bicicleta
 		this.velocidadActual/=2;
 	}
 	
-	public void cambiarPlato(int plato)
-	{
-		this.platoActual = plato;
-	}
-	
 	public void cambiarpinnon(int pinnon)
 	{
 		this.pinnonActual = pinnon;
-	}
-	
-	public void cambiarPlato()
-	{
-		this.platoActual = 1;
 	}
 	
 	public void cambiarpinnon()
