@@ -1,6 +1,6 @@
 package ejerciciosTeoriaPoo;
 
-public class Bicicleta extends Vehiculo
+public class Bicicleta extends Vehiculo implements Imprimible
 {
 	protected int pinnonActual;
 	
@@ -56,5 +56,15 @@ public class Bicicleta extends Vehiculo
 	public void cambiarpinnon()
 	{
 		this.pinnonActual = 1;
+	}
+
+	public void imprime() 
+	{
+		System.out.println("Velocidad actual: " + velocidadActual + "\nPlato actual: " + platoActual + "\nPìnnon actual: " + pinnonActual);
+	}
+
+	public int[] getAtributos() 
+	{
+		return new int[] {velocidadActual,platoActual,pinnonActual};
 	}
 }
