@@ -45,7 +45,7 @@ public abstract class Vehiculos
 		+ "\nPrecio -> " + getPrecio();
 	}
 	
-	public abstract void calcularImpuestos();
+	public abstract double calcularImpuestos();
 	
-	public abstract void calcularDepreciacion();
+	public abstract double calcularDepreciacion(int annos);
 }
