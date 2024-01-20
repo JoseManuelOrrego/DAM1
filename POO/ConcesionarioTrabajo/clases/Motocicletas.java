@@ -35,7 +35,7 @@ public class Motocicletas extends Vehiculos implements Alquilable
 	public void alquilar() 
 	{
 		System.out.println("Has alquilado la motocicleta " + getMarca() + " " + getModelo() + 
-				" con un precio de " + calcPrecioAlquiler() + " euros. Disfruta del alquiler!");
+				" por un precio de " + calcPrecioAlquiler() + " euros. Disfruta del alquiler!");
 	}
 
 	public double calcPrecioAlquiler() 

@@ -46,7 +46,7 @@ public class Coches extends Vehiculos implements Alquilable, Comprable
 	public void comprar() 
 	{
 		System.out.println("Has comprado el coche " + getMarca() + " " + getModelo() + 
-				" con un precio de " + calcPrecioCompra() + " euros. Disfruta de tu compra!");
+				" por un precio de " + calcPrecioCompra() + " euros. Disfruta de tu compra!");
 	}
 
 	public double calcPrecioCompra() 
@@ -57,7 +57,7 @@ public class Coches extends Vehiculos implements Alquilable, Comprable
 	public void alquilar() 
 	{
 		System.out.println("Has alquilado el coche " + getMarca() + " " + getModelo() + 
-				" con un precio de " + calcPrecioAlquiler() + " euros. Disfruta del alquiler!");
+				" por un precio de " + calcPrecioAlquiler() + " euros. Disfruta del alquiler!");
 	}
 
 	public double calcPrecioAlquiler() 

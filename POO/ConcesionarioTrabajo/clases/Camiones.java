@@ -25,7 +25,7 @@ public class Camiones extends Vehiculos implements Comprable
 	public void comprar() 
 	{
 		System.out.println("Has comprado el camion " + getMarca() + " " + getModelo() + 
-				" con un precio de " + calcPrecioCompra() + " euros. Disfruta de tu compra!");
+				" por un precio de " + calcPrecioCompra() + " euros. Disfruta de tu compra!");
 	}
 
 	public double calcPrecioCompra()
