@@ -1,6 +1,7 @@
 package clases;
 
 import interfaces.Alquilable;
+import otros.Globales;
 
 public class Motocicletas extends Vehiculos implements Alquilable
 {
@@ -14,24 +15,42 @@ public class Motocicletas extends Vehiculos implements Alquilable
 		this.tieneSidecar = tieneSidecar;
 	}
 
+	public String getTipoTransmision() 
+	{
+		return tipoTransmision;
+	}
+	public void setTipoTransmision(String tipoTransmision) 
+	{
+		this.tipoTransmision = tipoTransmision;
+	}
+	public boolean getTieneSidecar() 
+	{
+		return tieneSidecar;
+	}
+	public void setTieneSidecar(boolean tieneSidecar) 
+	{
+		this.tieneSidecar = tieneSidecar;
+	}
+
 	public void alquilar() 
 	{
-		
+		System.out.println("Has alquilado la motocicleta " + getMarca() + " " + getModelo() + 
+				" con un precio de " + calcPrecioAlquiler() + " euros. Disfruta del alquiler!");
 	}
 
 	public double calcPrecioAlquiler() 
 	{
-		return 0;
+		return (precio+calcularImpuestos())*Globales.ALQUILER_MOTO;
 	}
 
 	public double calcularImpuestos() 
 	{
-		return 0;
+		return precio*Globales.IMPUESTO_MOTO;
 	}
 
 	public double calcularDepreciacion(int annos) 
 	{
-		return 0;
+		return annos*Globales.DEP_MOTO;
 	}
 	
 }

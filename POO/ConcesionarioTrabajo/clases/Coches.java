@@ -18,9 +18,35 @@ public class Coches extends Vehiculos implements Alquilable, Comprable
 		this.esTermico = esTermico;
 	}
 
+	public int getNumPuertas() 
+	{
+		return numPuertas;
+	}
+	public void setNumPuertas(int numPuertas) 
+	{
+		this.numPuertas = numPuertas;
+	}
+	public boolean getEsElectrico() 
+	{
+		return esElectrico;
+	}
+	public void setEsElectrico(boolean esElectrico) 
+	{
+		this.esElectrico = esElectrico;
+	}
+	public boolean getEsTermico() 
+	{
+		return esTermico;
+	}
+	public void setEsTermico(boolean esTermico) 
+	{
+		this.esTermico = esTermico;
+	}
+
 	public void comprar() 
 	{
-		
+		System.out.println("Has comprado el coche " + getMarca() + " " + getModelo() + 
+				" con un precio de " + calcPrecioCompra() + " euros. Disfruta de tu compra!");
 	}
 
 	public double calcPrecioCompra() 
@@ -30,7 +56,8 @@ public class Coches extends Vehiculos implements Alquilable, Comprable
 
 	public void alquilar() 
 	{
-		
+		System.out.println("Has alquilado el coche " + getMarca() + " " + getModelo() + 
+				" con un precio de " + calcPrecioAlquiler() + " euros. Disfruta del alquiler!");
 	}
 
 	public double calcPrecioAlquiler() 
