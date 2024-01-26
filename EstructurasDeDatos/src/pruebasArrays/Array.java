@@ -99,8 +99,8 @@ public class Array
 		else
 			System.out.println("El elemento no se encuentra en el array");
 		
+		entrada.close();
 		return encontrado;
-		
 	}
 	
 	public static int contarElemento(int buscado, int [] array)
