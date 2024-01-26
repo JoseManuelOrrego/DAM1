@@ -23,6 +23,8 @@ public class Array
 		System.out.println();
 		
 		busquedaElemento(arrayConcatenado);
+		
+		System.out.println("El array está ordenado: " + estaOrdenadoASC(array1));
 	}
 	
 	public static int mayorElemento(int[]array)
@@ -99,7 +101,7 @@ public class Array
 		else
 			System.out.println("El elemento no se encuentra en el array");
 		
-		entrada.close();
+		entrada.close();                   
 		return encontrado;
 	}
 	
@@ -120,5 +122,39 @@ public class Array
 		{
 			System.out.print(array[i]);
 		}
+	}
+	
+	public static boolean estaOrdenadoASC(int [] array)
+	{
+		boolean ordenado = true;
+		int anterior = array[0];
+		for(int i = 0; i < array.length && ordenado; i++)
+		{
+			
+			if(array[i] > anterior)
+			{
+				anterior = array[i];
+			}
+			else
+				ordenado = false;
+		}
+		return ordenado;
+	}
+	
+	public static boolean estaOrdenadoDESC(int [] array)
+	{
+		boolean ordenado = true;
+		int anterior = array[0];
+		for(int i = 0; i < array.length && ordenado; i++)
+		{
+			
+			if(array[i] < anterior)
+			{
+				anterior = array[i];
+			}
+			else
+				ordenado = false;
+		}
+		return ordenado;
 	}
 }
