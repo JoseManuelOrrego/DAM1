@@ -25,6 +25,10 @@ public class Array
 		busquedaElemento(arrayConcatenado);
 		
 		System.out.println("El array está ordenado: " + estaOrdenadoASC(array1));
+		
+		int [] arrayDesordenado = {6, 8, 2, 4, 1, 5, 3, 7};
+		ordenadoBurbuja(arrayDesordenado);
+		mostrarArray(arrayDesordenado);
 	}
 	
 	public static int mayorElemento(int[]array)
@@ -156,5 +160,36 @@ public class Array
 				ordenado = false;
 		}
 		return ordenado;
+	}
+	
+	public static void pesadoAlFinal(int[]array) 
+	{
+		int aux;
+		for(int i = 0; i<array.length-1;i++) 
+		{
+			if(array[i]>array[i+1]) 
+			{
+				aux = array[i+1];
+				array[i+1] = array[i];
+				array[i]=aux;
+			}
+		}
+	}
+	
+	public static void ordenadoBurbuja(int[]array) 
+	{
+		int aux;
+		for(int i = 0; i<array.length-1;i++) 
+		{
+			for(int j = 0; j < array.length - 1 - i; j++)
+			{
+				if(array[j]>array[j+1]) 
+				{
+					aux = array[j+1];
+					array[j+1] = array[j];
+					array[j]=aux;
+				}
+			}
+		}
 	}
 }
