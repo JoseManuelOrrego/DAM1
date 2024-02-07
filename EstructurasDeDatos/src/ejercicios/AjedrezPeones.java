@@ -9,6 +9,9 @@ public class AjedrezPeones
 	{
 		char [][] tablero = crearAjedrez();
 		imprimirArray(tablero);
+		char x = 'a';
+		int xx = x;
+		System.out.println(xx);
 	}
 	
 	public static char[][] crearAjedrez() 
