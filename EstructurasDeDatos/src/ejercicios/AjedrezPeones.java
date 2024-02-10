@@ -14,6 +14,7 @@ public class AjedrezPeones
 			System.out.println("Turno " + (i+1));
 			intentoMovimiento(tablero);
 		}
+		System.out.println("Fin de los turnos");
 	}
 	
 	public static char[][] crearAjedrez() 
@@ -88,9 +89,12 @@ public class AjedrezPeones
 		boolean bingo = false;
 		while(!bingo)
 		{
+			String posicionReal = "";
 			System.out.print("¿Que peon quieres mover?  --> ");
 			String posicion = entrada.next();
-			posicion = convertirPosicion(posicion);
+			posicionReal += Character.toUpperCase(posicion.charAt(0));
+			posicionReal += posicion.charAt(1);
+			posicion = convertirPosicion(posicionReal);
 			if(tablero[posicion.charAt(1) - '0'][posicion.charAt(0) - '0'] == 'P')
 			{
 				bingo = true;
@@ -119,9 +123,12 @@ public class AjedrezPeones
 		boolean cambioCorrecto = false;
 		while(!cambioCorrecto)
 		{
+			String posicionReal = "";
 			System.out.print("Inserta la casilla a la que quieres mover el peon --> ");
 			String posicionNueva = entrada.next();
-			posicionNueva = convertirPosicion(posicionNueva);
+			posicionReal += Character.toUpperCase(posicionNueva.charAt(0));
+			posicionReal += posicionNueva.charAt(1);
+			posicionNueva = convertirPosicion(posicionReal);
 			
 			if(tablero[posicionNueva.charAt(1)-'0'][posicionNueva.charAt(0)-'0'] == 'X')
 			{
