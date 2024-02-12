@@ -5,7 +5,7 @@ public class Telefono extends ProductoElectronico
 	private double tamannoPantalla;
 	private String OS;
 	
-	public Telefono (String marca, String modelo, double precio, int annoFabricacion, double tamannoPantalla, String OS)
+	public Telefono(String marca, String modelo, double precio, int annoFabricacion, double tamannoPantalla, String OS)
 	{
 		super(marca, modelo, precio, annoFabricacion);
 		this.tamannoPantalla = tamannoPantalla;
