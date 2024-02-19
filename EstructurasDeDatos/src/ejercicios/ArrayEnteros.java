@@ -14,6 +14,7 @@ public class ArrayEnteros
 	public ArrayEnteros(ArrayEnteros array)
 	{
 		ArrayEnteros arrayCopia = new ArrayEnteros(array.array.length);
+
 	}
 	
 	public ArrayEnteros()
