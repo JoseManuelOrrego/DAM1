@@ -34,6 +34,14 @@ public class ArrayEnteros
 		entrada.close();
 	}
 	
+	public void mostrar()
+	{
+		for(int i = 0; i < array.length; i++)
+		{
+			System.out.println(array[i]);
+		}
+	}
+	
 	public void insertar(boolean [] arrayPosiciones, int numero)
 	{
 		boolean insertado = false;
