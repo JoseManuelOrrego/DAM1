@@ -90,7 +90,7 @@ public class AjedrezPeones
 		while(!bingo)
 		{
 			String posicionReal = "";
-			System.out.print("¿Que peon quieres mover?  --> ");
+			System.out.print("ï¿½Que peon quieres mover?  --> ");
 			String posicion = entrada.next();
 			posicionReal += Character.toUpperCase(posicion.charAt(0));
 			posicionReal += posicion.charAt(1);

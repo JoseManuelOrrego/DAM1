@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ejercicioAlumnosProfesores","l":"Alumno"},{"p":"ejercicioAlumnosProfesores","l":"Fecha"},{"p":"ejercicioAlumnosProfesores","l":"Profesor"}];updateSearchResults();
