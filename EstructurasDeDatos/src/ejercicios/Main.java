@@ -6,5 +6,7 @@ public class Main
 	{
 		ArrayEnteros array = new ArrayEnteros();
 		array.mostrar();
+		array.eliminar();
+		array.mostrar();
 	}
 }

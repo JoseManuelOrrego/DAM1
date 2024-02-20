@@ -5,45 +5,65 @@ import java.util.Scanner;
 public class ArrayEnteros 
 {
 	private int [] array;
+	private boolean [] arrayPosiciones;
 	
 	public ArrayEnteros(int longitud)
 	{
 		this.array = new int[longitud];
+		this.arrayPosiciones = new boolean[longitud];
 	}
 	
 	public ArrayEnteros(ArrayEnteros array)
 	{
-		ArrayEnteros arrayCopia = new ArrayEnteros(array.array.length);
-
+		this.array = new int[array.array.length];
+		this.arrayPosiciones = new boolean[array.arrayPosiciones.length];
+        for (int i = 0; i < array.array.length; i++) 
+        {
+            this.array[i] = array.array[i];
+            this.arrayPosiciones[i] = array.arrayPosiciones[i];
+        }
 	}
 	
-	public ArrayEnteros()
-	{
-		Scanner entrada = new Scanner(System.in);
-		boolean salida = false;
-		int contador = 0;
-		while (!salida)
-		{
-			System.out.print("Introduce numeros para el array o introduce 999 para salir: ");
-			int numero = entrada.nextInt();
-			if(numero == 999)
-				salida = true;
-			else
-				array[contador] = numero;
-			contador += 1;
-		}
-		entrada.close();
-	}
+	 public ArrayEnteros() 
+	 {
+	        Scanner entrada = new Scanner(System.in);
+	        System.out.print("Introduce la longitud del array: ");
+	        int longitud = entrada.nextInt();
+	        this.array = new int[longitud];
+	        this.arrayPosiciones = new boolean[longitud];
+
+	        boolean salida = false;
+	        int contador = 0;
+	        System.out.print("Introduce números para el array o introduce 999 para salir: ");
+	        while (!salida) 
+	        {
+	            int numero = entrada.nextInt();
+	            if (numero == 999)
+	                salida = true;
+	            else
+	            {
+	            	array[contador] = numero;
+	            	arrayPosiciones[contador] = true;
+	            }
+	            if (contador == longitud-1) 
+	            {
+	                salida = true;
+	            }
+	            contador++;
+	        }
+	    }
 	
 	public void mostrar()
 	{
 		for(int i = 0; i < array.length; i++)
 		{
-			System.out.println(array[i]);
+			if(arrayPosiciones[i])
+				System.out.print(array[i] + " ");
 		}
+		System.out.println();
 	}
 	
-	public void insertar(boolean [] arrayPosiciones, int numero)
+	public void insertar(int numero)
 	{
 		boolean insertado = false;
 		int i = 0;
@@ -52,17 +72,19 @@ public class ArrayEnteros
 			if(!arrayPosiciones[i])
 			{
 				array[i] = numero;
+				arrayPosiciones[i] = true;
 				insertado = true;
 			}
 			i++;
 		}
 	}
 	
-	public void insertarWPosicion(boolean [] arrayPosiciones, int numero, int posicion)
+	public void insertarWPosicion(int numero, int posicion)
 	{
 		if(!arrayPosiciones[posicion])
 		{
 			array[posicion] = numero;
+			arrayPosiciones[posicion] = true;
 		}
 		else
 			System.out.println("La posicion elegida ya esta ocupada.");
@@ -107,14 +129,14 @@ public class ArrayEnteros
 		}
 	}
 	
-	public boolean buscar(int buscado)
+	public int buscar(int buscado)
 	{
 		for(int i = 0; i < array.length; i++)
 		{
 			if(array[i] == buscado)
-				return true;
+				return i;
 		}
-		return false;
+		return -1;
 	}
 	
 	public void numVeces(int buscado)
@@ -128,5 +150,43 @@ public class ArrayEnteros
 			}
 		}
 		System.out.println("El elemento se ha encontrado " + numVeces + " veces.");
+	}
+	
+	public void eliminar()
+	{
+		Scanner entrada = new Scanner(System.in);
+		int posicion = -1;
+		boolean encontrado = false;
+		while(!encontrado)
+		{
+			System.out.print("Introduce una posicion valida que quieres eliminar: ");
+			posicion = entrada.nextInt();
+			if (posicion >= 0 && posicion < arrayPosiciones.length) 
+			{
+                encontrado = true;
+			}
+			if(!encontrado)
+				System.out.println("Posicion no valida");
+		}
+		
+		arrayPosiciones[posicion] = false;
+		System.err.println("Elemento eliminado (No esta eliminado, solo ocultado)");
+	}
+	
+	public int[] fusion(int[] array2)
+	{
+		int [] arrayFusionado = new int[array.length+array2.length];
+		for(int i = 0; i < arrayFusionado.length; i++)
+		{
+			if(i < array.length)
+			{
+				arrayFusionado[i] = array[i];
+			}
+			else
+			{
+				arrayFusionado[i] = array2[i];
+			}
+		}
+		return arrayFusionado;
 	}
 }
