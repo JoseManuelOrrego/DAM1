@@ -34,7 +34,7 @@ public class ArrayEnteros
 
 	        boolean salida = false;
 	        int contador = 0;
-	        System.out.print("Introduce números para el array o introduce 999 para salir: ");
+	        System.out.print("Introduce nï¿½meros para el array o introduce 999 para salir: ");
 	        while (!salida) 
 	        {
 	            int numero = entrada.nextInt();
@@ -188,5 +188,32 @@ public class ArrayEnteros
 			}
 		}
 		return arrayFusionado;
+	}
+	
+	public void paresImpares()
+	{
+		int pares = 0, impares = 0;
+		for(int i = 0; i < array.length; i++)
+		{
+			if(arrayPosiciones[i] && array[i] % 2 == 0)
+				pares++;
+			else if(arrayPosiciones[i] && array[i] % 2 != 0)
+				impares++;
+		}
+		System.out.println("Numero de pares del array: " + pares + "\nNumero de impares del array: " + impares);
+	}
+	
+	public void media()
+	{
+		int suma = 0, elementos = 0;
+		for(int i = 0; i < array.length; i++)
+		{
+			if(arrayPosiciones[i])
+			{
+				elementos++;
+				suma += array[i];
+			}
+		}
+		System.out.println("Media de los elementos del array: " + suma/elementos);
 	}
 }
