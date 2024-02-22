@@ -1,4 +1,4 @@
-package ejercicios;
+package arrayEnteros;
 
 import java.util.Scanner;
 
@@ -34,9 +34,9 @@ public class ArrayEnteros
 
 	        boolean salida = false;
 	        int contador = 0;
-	        System.out.print("Introduce n�meros para el array o introduce 999 para salir: ");
 	        while (!salida) 
 	        {
+		        System.out.print("Introduce numeros para el array o introduce 999 para salir: ");
 	            int numero = entrada.nextInt();
 	            if (numero == 999)
 	                salida = true;
@@ -53,6 +53,14 @@ public class ArrayEnteros
 	        }
 	    }
 	
+	public int[] getArray() {
+		return array;
+	}
+
+	public void setArray(int[] array) {
+		this.array = array;
+	}
+
 	public void mostrar()
 	{
 		for(int i = 0; i < array.length; i++)
@@ -63,7 +71,7 @@ public class ArrayEnteros
 		System.out.println();
 	}
 	
-	public void insertar(int numero)
+	public boolean insertar(int numero)
 	{
 		boolean insertado = false;
 		int i = 0;
@@ -74,20 +82,24 @@ public class ArrayEnteros
 				array[i] = numero;
 				arrayPosiciones[i] = true;
 				insertado = true;
+				return true;
 			}
 			i++;
 		}
+		return false;
 	}
 	
-	public void insertarWPosicion(int numero, int posicion)
+	public boolean insertar(int numero, int posicion)
 	{
 		if(!arrayPosiciones[posicion])
 		{
 			array[posicion] = numero;
 			arrayPosiciones[posicion] = true;
+			return true;
 		}
 		else
 			System.out.println("La posicion elegida ya esta ocupada.");
+		return false;
 	}
 	
 	public void ordenar()
@@ -173,18 +185,20 @@ public class ArrayEnteros
 		System.err.println("Elemento eliminado (No esta eliminado, solo ocultado)");
 	}
 	
-	public int[] fusion(int[] array2)
+	public ArrayEnteros fusionar(ArrayEnteros array2)
 	{
-		int [] arrayFusionado = new int[array.length+array2.length];
-		for(int i = 0; i < arrayFusionado.length; i++)
+		ArrayEnteros arrayFusionado = new ArrayEnteros(array.length+array2.array.length);
+		for(int i = 0; i < arrayFusionado.array.length; i++)
 		{
 			if(i < array.length)
 			{
-				arrayFusionado[i] = array[i];
+				arrayFusionado.array[i] = array[i];
+				arrayFusionado.arrayPosiciones[i] = arrayPosiciones[i];
 			}
-			else
+			else if(i >= array.length)
 			{
-				arrayFusionado[i] = array2[i];
+				arrayFusionado.array[i] = array2.array[i-array.length];
+				arrayFusionado.arrayPosiciones[i] = array2.arrayPosiciones[i-array.length];
 			}
 		}
 		return arrayFusionado;
