@@ -51,7 +51,7 @@ public class Pila
 	public void mirar()
 	{
 		if(pilaVacia())
-			System.out.println("La pila está vacía, no se puede mostrar nada");
+			System.out.println("La pila esta vacia, no se puede mostrar nada");
 		else
 			System.out.println("Valor de la cima de la pila -> " + caracteres[cima]);
 	}
