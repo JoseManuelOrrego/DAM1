@@ -1,0 +1,5 @@
+1. La principal diferencia es que el objeto es una instancia de la clase. Un objeto puede ser un ejemplo de la clase, utilizando los atributos y metodos
+	de la clase, como si fuese una plantilla.
+	
+2. El super, en programacion, se utiliza para llamar a la clase superior o clase padre. Se puede utilizar en los constructores y tanto como en
+	los metodos de la clase.
