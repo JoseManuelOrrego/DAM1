@@ -8,46 +8,36 @@ public class ColaEstatica
 	public ColaEstatica(int longitud)
 	{
 		array = new char[longitud];
-		setFin(-1);
-	}
-	
-	public char [] getArray() {
-		return array;
+		fin = -1;
 	}
 
-	public int getFin() {
-		return fin;
-	}
-
-	public int setFin(int fin) {
-		this.fin = fin;
-		return fin;
-	}
-
-	public void encolar(char caracter)
+	public char encolar(char caracter)
 	{
 		if(!colaLlena())
 		{
-			getArray()[setFin(getFin() + 1)] = caracter;
+			array[++fin] = caracter;
+			
+			return array[fin];
 		}
 		else
 		{
 			System.out.println("Imposible introducir, la cola esta llena");
+			return 0;
 		}
 	}
 	public boolean colaLlena()
 	{
-		return getFin() == getArray().length-1;
+		return fin == array.length-1;
 	}
 	
 	public char desencolar()
 	{
 		if(!colaVacia())
 		{
-			char retornable = getArray()[0];
-			for(int i = 0; i < getFin(); i++)
+			char retornable = array[0];
+			for(int i = 0; i < fin; i++)
 			{
-				getArray()[i] = getArray()[i+1];	
+				array[i] = array[i+1];	
 			}
 			fin--;
 			return retornable;
@@ -59,6 +49,16 @@ public class ColaEstatica
 	}
 	public boolean colaVacia()
 	{
-		return getFin() == -1;
+		return fin == -1;
+	}
+	
+	public int tamMaxCola()
+	{
+		return array.length;
+	}
+	
+	public int numElementos()
+	{
+		return fin+1;
 	}
 }

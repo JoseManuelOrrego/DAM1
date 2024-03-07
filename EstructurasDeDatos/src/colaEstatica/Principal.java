@@ -33,7 +33,7 @@ public class Principal
 	public static void rellenar(ColaEstatica cola)
 	{
 		char caracter = 'a';
-		for(int i = 0; i < cola.getArray().length; i++)
+		for(int i = 0; i < cola.tamMaxCola(); i++)
 		{
 			cola.encolar(caracter++);
 		}
@@ -41,7 +41,8 @@ public class Principal
 	
 	public static void vaciar(ColaEstatica cola)
 	{
-		for(int i = 0; i <= cola.getFin(); i++)
+		int fin = cola.numElementos();
+		for(int i = 0; i <= fin; i++)
 		{
 			System.out.print(cola.desencolar() + " ");
 		}
@@ -50,9 +51,9 @@ public class Principal
 	
 	public static void mostrarColaFor(ColaEstatica cola)
 	{
-		for(int i = 0; i <= cola.getFin(); i++)
+		for(int i = 0; i < cola.numElementos(); i++)
 		{
-			System.out.print(cola.getArray()[i] + " ");
+			System.out.print(cola.encolar(cola.desencolar()) + " ");
 		}
 		System.out.println();
 	}
@@ -70,6 +71,11 @@ public class Principal
 			}
 		}
 		System.out.println();
+	}
+	
+	public static void mostrarColaRecur(ColaEstatica cola)
+	{
+		
 	}
 	
 	public static void mostraryVoltearCola(ColaEstatica cola)
