@@ -18,16 +18,18 @@ public class Principal
 		cola.desencolar();
 		cola.encolar('e');
 		cola.encolar('f');
+		mostrarColaRecur(cola);
+		vaciar(cola);
+		rellenar(cola);
+		cola.desencolar();
+		cola.desencolar();
+		vaciar(cola);
+		rellenar(cola);
+		mostraryVoltearCola(cola);
+		mostraryVoltearCola(cola);
+		mostrarColaFor(cola);
 		mostrarColaWhile(cola);
-		vaciar(cola);
-		rellenar(cola);
-		cola.desencolar();
-		cola.desencolar();
-		vaciar(cola);
-		rellenar(cola);
-		mostraryVoltearCola(cola);
-		mostraryVoltearCola(cola);
-		mostraryVoltearCola(cola);
+		mostrarColaRecur(cola);
 	}
 	
 	public static void rellenar(ColaEstatica cola)
@@ -42,11 +44,10 @@ public class Principal
 	public static void vaciar(ColaEstatica cola)
 	{
 		int fin = cola.numElementos();
-		for(int i = 0; i <= fin; i++)
+		for(int i = 0; i < fin; i++)
 		{
-			System.out.print(cola.desencolar() + " ");
+			cola.desencolar();
 		}
-		System.out.println();
 	}
 	
 	public static void mostrarColaFor(ColaEstatica cola)
@@ -64,8 +65,9 @@ public class Principal
 		int num = 0;
 		while(!salida)
 		{
-			System.out.print(cola.getArray()[num++] + " ");
-			if(num == cola.getFin())
+			System.out.print(cola.encolar(cola.desencolar()) + " ");
+			num++;
+			if(num == cola.numElementos())
 			{
 				salida = true;
 			}
@@ -75,17 +77,31 @@ public class Principal
 	
 	public static void mostrarColaRecur(ColaEstatica cola)
 	{
-		
+		llamadaFuncion(cola, 0);
+		System.out.println();
+	}
+	public static void llamadaFuncion(ColaEstatica cola, int numero)
+	{
+		if(numero == cola.numElementos())
+		{
+			return;
+		}
+		System.out.print(cola.encolar(cola.desencolar()) + " ");
+		llamadaFuncion(cola, numero+1);
 	}
 	
 	public static void mostraryVoltearCola(ColaEstatica cola)
 	{
-		int inicio = 0;
-		for(int i = 0; i < cola.getArray().length/2; i++)
+		int fin = cola.numElementos();
+		char [] auxiliar = new char['z'-'a'+1];
+		for(int i = 0; i < fin; i++)
 		{
-			char aux = cola.getArray()[inicio];
-			cola.getArray()[inicio] = cola.getArray()[cola.getFin()-i];
-			
+			auxiliar[i] = cola.desencolar();
 		}
+		for(int i = fin-1; i >= 0; i--)
+		{
+			cola.encolar(auxiliar[i]);
+		}
+		mostrarColaFor(cola);
 	}
 }
