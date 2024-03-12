@@ -28,4 +28,11 @@ public class Alumno
 	{
 		this.nota = nota;
 	}
+	
+	public void mostrarDatos()
+	{
+		System.err.println("--------------------------------");
+		System.out.println("Nombre del alumno --> " + nombre + "\nNota --> " + nota);
+		System.err.println("--------------------------------");
+	}
 }

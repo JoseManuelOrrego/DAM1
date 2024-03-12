@@ -25,13 +25,32 @@ public class PilaAlumnos
 	
 	public Alumno desapilar()
 	{
-		Alumno [] pilaAux = new Alumno[pila.length-1];
-		for(int i = 0; i < pilaAux.length; i++)
+		if(pilaVacia())
 		{
-			pilaAux[i] = pila[i];
+			System.out.println("La pila de Alumnos está vacía");
+			return null;
 		}
-		Alumno retornable = pila[cima--];
-		pila = pilaAux;
-		return retornable;
+		else if(cima == 0)
+		{
+			Alumno [] pilaAux = new Alumno[0];
+			Alumno retornable = pila[cima--];
+			pila = pilaAux;
+			return retornable;
+		}
+		else
+		{
+			Alumno [] pilaAux = new Alumno[pila.length-1];
+			for(int i = 0; i < pilaAux.length; i++)
+			{
+				pilaAux[i] = pila[i];
+			}
+			Alumno retornable = pila[cima--];
+			pila = pilaAux;
+			return retornable;
+		}
+	}
+	public boolean pilaVacia()
+	{
+		return cima == -1;
 	}
 }
