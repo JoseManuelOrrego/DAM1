@@ -27,7 +27,7 @@ public class PilaAlumnos
 	{
 		if(pilaVacia())
 		{
-			System.out.println("La pila de Alumnos está vacía");
+			System.out.println("La pila de Alumnos esta vacia");
 			return null;
 		}
 		else if(cima == 0)
@@ -52,5 +52,18 @@ public class PilaAlumnos
 	public boolean pilaVacia()
 	{
 		return cima == -1;
+	}
+	
+	public void mostrarPila()
+	{
+		for(int i = 0; i < pila.length; i++)
+		{
+			pila[i].mostrarDatos();
+		}
+	}
+	
+	public int numElementos()
+	{
+		return pila.length;
 	}
 }

@@ -29,6 +29,11 @@ public class Alumno
 		this.nota = nota;
 	}
 	
+	public void matricular(String nombreAsignatura) 
+	{
+		System.out.println("Alumno matriculado en -> " + nombreAsignatura);
+	}
+	
 	public void mostrarDatos()
 	{
 		System.err.println("--------------------------------");

@@ -26,7 +26,7 @@ public class ColaAlumnos
 	{
 		if(colaVacia())
 		{
-			System.out.println("La cola de Alumnos está vacía");
+			System.out.println("La cola de Alumnos esta vacia");
 			return null;
 		}
 		else if(fin == 0)
@@ -52,6 +52,11 @@ public class ColaAlumnos
 	public boolean colaVacia()
 	{
 		return fin == -1;
+	}
+	
+	public int numElementos()
+	{
+		return cola.length;
 	}
 	
 	public void mostrarCola()
