@@ -36,8 +36,8 @@ public class Alumno
 	
 	public void mostrarDatos()
 	{
-		System.err.println("--------------------------------");
+		System.out.println("--------------------------------");
 		System.out.println("Nombre del alumno --> " + nombre + "\nNota --> " + nota);
-		System.err.println("--------------------------------");
+		System.out.println("--------------------------------");
 	}
 }

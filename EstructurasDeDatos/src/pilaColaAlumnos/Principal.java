@@ -19,6 +19,9 @@ public class Principal
 		
 		matricular(cola, 1000);
 		System.out.println("Media de las notas de los alumnos --> " + media(pila));
+		
+		cola.mostrarCola();
+		pila.mostrarPila();
 	}
 	
 	public static Alumno crearAlumno()
@@ -64,19 +67,5 @@ public class Principal
 		}
 		
 		return sumatorio;
-	}
-	
-	private static int calcularSuma(PilaAlumnos pila, int numero)
-	{
-		Alumno alumno = null;
-		int nota = 0;
-		if(numero > 0)
-		{
-			alumno = pila.desapilar();
-			nota = alumno.getNota();
-			calcularSuma(pila, --numero);
-		}
-		pila.apilar(alumno);
-		return nota;
 	}
 }
