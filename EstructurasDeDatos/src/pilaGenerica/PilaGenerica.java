@@ -1,35 +1,39 @@
 package pilaGenerica;
 
-import pilaNodos.Nodo;
-
 public class PilaGenerica <T>
 {
-	private Nodo<String> primero;
+	private Nodo<T> primero;
 	private Nodo<T> cima;
-	private int tamMax;
+	private int elementos;
 	
 	public PilaGenerica()
 	{
-		primero = new Nodo(null,null);
+		primero = null;
 		cima = null;
-		tamMax = 2000;
+		elementos = 0;
 	}
 	
 	public void apilar(T dato)
 	{
-		Nodo nodo = new Nodo(dato, null);
+		Nodo<T> nodo = new Nodo<T>(dato, null);
 		if(pilaVacia())
 		{
 			cima = nodo;
 			primero = nodo;
+			elementos++;
+		}
+		else if(pilaLlena())
+		{
+			System.out.println("Pila llena. Maximo de 2000");
 		}
 		else
 		{
 			cima.enlace = nodo;
 			cima = nodo;
+			elementos++;
 		}
 	}
-	public Nodo desapilar()
+	public Nodo<T> desapilar()
 	{
 		if(pilaVacia())
 		{
@@ -38,20 +42,22 @@ public class PilaGenerica <T>
 		}
 		else if(cima == primero)
 		{
-			Nodo aDevolver = cima;
+			Nodo<T> aDevolver = cima;
 			cima = null;
 			primero = null;
+			elementos--;
 			return aDevolver;
 		}
 		else
 		{
-			Nodo anterior = primero;
+			Nodo<T> anterior = primero;
 			while(anterior.enlace != cima)
 			{
 				anterior = anterior.enlace;
 			}
-			Nodo aDevolver = cima;
+			Nodo<T> aDevolver = cima;
 			cima = anterior;
+			elementos--;
 			return aDevolver;
 		}
 	}
@@ -59,5 +65,9 @@ public class PilaGenerica <T>
 	public boolean pilaVacia()
 	{
 		return cima == null;
+	}
+	public boolean pilaLlena()
+	{
+		return elementos == 2000;
 	}
 }
