@@ -11,7 +11,7 @@ public class Cliente
 	
 	public void llega()
 	{
-		System.out.println("Â¿Quien es el ultimo?");
+		System.out.println("¿Quien es el ultimo?");
 	}
 	public void contestaUltimo()
 	{
@@ -20,5 +20,10 @@ public class Cliente
 	public void seVa()
 	{
 		System.out.println("Gracias, me voy");
+	}
+	
+	public String mostrarNombre()
+	{
+		return nombre;
 	}
 }
