@@ -15,7 +15,7 @@ public class ColaGenerica <T>
 	
 	public void encolar(T t)
 	{
-		Nodo nodo = new Nodo(t,null);
+		Nodo<T> nodo = new Nodo<T>(t,null);
 		if(colaVacia())
 		{
 			ultimo = nodo;
@@ -30,7 +30,7 @@ public class ColaGenerica <T>
 		}
 	}
 	
-	public Nodo desencolar()
+	public T desencolar()
 	{
 		if(colaVacia())
 		{
@@ -39,18 +39,18 @@ public class ColaGenerica <T>
 		}
 		else if(ultimo == primero)
 		{
-			Nodo aDevolver = ultimo;
+			Nodo<T> aDevolver = ultimo;
 			ultimo = null;
 			primero = null;			
 			numElementos -= 1;
-			return aDevolver;
+			return aDevolver.info;
 		}
 		else
 		{
-			Nodo aDevolver = primero;
+			Nodo<T> aDevolver = primero;
 			primero = primero.enlace;
 			numElementos -= 1;
-			return aDevolver;
+			return aDevolver.info;
 		}
 	}
 	

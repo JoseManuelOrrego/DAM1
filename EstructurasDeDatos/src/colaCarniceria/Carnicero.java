@@ -12,7 +12,7 @@ public class Carnicero
 	public void llegaCliente(Cliente cl)
 	{
 		cl.llega();
-		colaDeClientes.
-		colaDeClientes.encolar(cl);
+		//colaDeClientes.
+		//colaDeClientes.encolar(cl);
 	}
 }
