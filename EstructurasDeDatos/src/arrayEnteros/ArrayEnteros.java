@@ -51,7 +51,7 @@ public class ArrayEnteros
 	            }
 	            contador++;
 	        }
-	    }
+	  }
 	
 	public int[] getArray() {
 		return array;
