@@ -2,9 +2,9 @@ package listas;
 
 public interface Lista <T>
 {
-	public void añadir(int posicion, T elemento);
+	public void insertar(int posicion, T elemento);
 	
-	public void añadir(T elemento);
+	public void insertar(T elemento);
 	
 	public void vaciar();
 	
@@ -22,7 +22,7 @@ public interface Lista <T>
 	
 	public T set(int posicion, T elemento);
 	
-	public int tamaño();
+	public int tamanno();
 	
 	public Lista<T> sublista(int desde, int hasta);
 	
