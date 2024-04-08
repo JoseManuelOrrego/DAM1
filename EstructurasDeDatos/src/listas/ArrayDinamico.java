@@ -76,13 +76,14 @@ public class ArrayDinamico<T> implements Lista<T>
 			Object [] arrayAux = new Object[longi];
 			for(int i = 0; i < arrayAux.length; i++)
 			{
-				if(i == (array.length+1))
+				if(i == (array.length))
 				{
 					arrayAux[i] = elemento;
 				}
 				else
 				{
-					arrayAux[i] = array[i];
+					if(i < array.length)
+						arrayAux[i] = array[i];
 				}
 			}
 			array = arrayAux;
@@ -90,7 +91,7 @@ public class ArrayDinamico<T> implements Lista<T>
 		}
 		else
 		{
-			array[++tamanno] = elemento;
+			array[tamanno++] = elemento;
 		}
 	}
 
@@ -165,6 +166,7 @@ public class ArrayDinamico<T> implements Lista<T>
 				T aux = (T) array[posicion];
 				array[posicion] = null;
 				tamanno--;
+				comprobarLongitud();
 				return aux;
 			}
 			else if(posicion >= tamanno)
@@ -175,7 +177,7 @@ public class ArrayDinamico<T> implements Lista<T>
 			else
 			{
 				T aux = (T) array[posicion];
-				for(int i = 0; i < array.length; i++)
+				for(int i = 0; i < array.length-1; i++)
 				{
 					if(i >= posicion)
 					{
@@ -183,6 +185,7 @@ public class ArrayDinamico<T> implements Lista<T>
 					}
 				}
 				tamanno--;
+				comprobarLongitud();
 				return aux;
 			}
 		}
@@ -193,7 +196,7 @@ public class ArrayDinamico<T> implements Lista<T>
 		int posicion = indice(elemento);
 		if(posicion != -1)
 		{
-			for(int i = 0; i < array.length; i++)
+			for(int i = 0; i < array.length-1; i++)
 			{
 				if(i >= posicion)
 				{
@@ -201,6 +204,7 @@ public class ArrayDinamico<T> implements Lista<T>
 				}
 			}
 			tamanno--;
+			comprobarLongitud();
 			return true;
 		}
 		else
@@ -210,6 +214,30 @@ public class ArrayDinamico<T> implements Lista<T>
 		}
 	}
 
+	public void comprobarLongitud()
+	{
+		if(array.length > 10)
+		{
+			int contador = 0;
+			for(int i = 0; i < array.length; i++)
+			{
+				if(array[i] == null)
+				{
+					contador++;
+				}
+			}
+			if(contador >= (array.length/2))
+			{
+				Object [] aux = new Object[(array.length-contador)+(contador/2)];
+				for(int i = 0; i < aux.length; i++)
+				{
+					aux[i] = array[i];
+				}
+				array = aux;
+			}
+		}
+	}
+	
 	public T set(int posicion, T elemento) 
 	{
 		if(tamanno > 0)
@@ -231,12 +259,31 @@ public class ArrayDinamico<T> implements Lista<T>
 
 	public Lista<T> sublista(int desde, int hasta)
 	{
-		return null;
+		ArrayDinamico<T> lista = new ArrayDinamico<T>();
+		for(int i = desde; i <= hasta; i++)
+		{
+			lista.insertar((T) array[i]);
+		}
+		return lista;
 	}
 
-	public void concatenar(Lista<T> listaNueva) 
+	public void concatenar(Lista<T> lista) 
 	{
-		
+		ArrayDinamico<T> listaNueva = (ArrayDinamico<T>) lista;
+		Object [] arrayNuevo = new Object[array.length+listaNueva.array.length];
+		this.tamanno = this.tamanno + listaNueva.tamanno;
+		for(int i = 0; i < arrayNuevo.length; i++)
+		{
+			if(i <= array.length)
+			{
+				arrayNuevo[i] = array[i];
+			}
+			else
+			{
+				arrayNuevo[i] = listaNueva.array[i-array.length];
+			}
+		}
+		array = arrayNuevo;
 	}
 	
 }
