@@ -2,83 +2,172 @@ package listas;
 
 public class ListaEnlazada<T> implements Lista<T> 
 {
-
-	@Override
-	public void insertar(int posicion, T elemento) {
-		// TODO Auto-generated method stub
-		
+	private Nodo<T> inicio;
+	private Nodo<T> ultimo;
+	private int numElementos;
+	
+	public ListaEnlazada()
+	{
+		inicio = null;
+		ultimo = null;
+		numElementos = 0;
+	}
+	
+	private Nodo<T> getNodo(int posicion) 
+	{
+		if (posicion < 0 || posicion >= numElementos) 
+		{
+			return null;
+		}
+		Nodo<T> nodo = inicio;
+		int i = 0;
+		while (tieneEnlace(nodo) && i < posicion) 
+		{
+			nodo = nodo.enlace;
+			i++;
+		}
+		return nodo;
 	}
 
-	@Override
-	public void insertar(T elemento) {
-		// TODO Auto-generated method stub
-		
+	private boolean tieneEnlace(Nodo<T> nodo) 
+	{
+		return nodo.enlace != null;
+	}
+	
+	public void insertar(int posicion, T elemento) 
+	{
+		Nodo<T> nodo = new Nodo<T>(elemento,null); 
+		if(estaVacia())
+		{
+			inicio = nodo;
+			ultimo = nodo;
+			numElementos++;
+		}
+		else if(posicion >= 0 && posicion < numElementos)
+		{
+			Nodo<T> actual = inicio;
+			Nodo<T> anterior = null;
+			int i = 0;
+			while(tieneEnlace(actual) && i < posicion)
+			{
+				anterior = actual;
+				actual = actual.enlace;
+				i++;
+			}
+			anterior.enlace = nodo;
+			nodo.enlace = actual;
+			numElementos++;
+		}
+		else
+		{
+			insertar(elemento);
+		}
 	}
 
-	@Override
-	public void vaciar() {
-		// TODO Auto-generated method stub
-		
+	public void insertar(T elemento)
+	{
+		Nodo<T> nodo = new Nodo<T>(elemento, null);
+		if(estaVacia())
+		{
+			inicio = nodo;
+			ultimo = nodo;
+			numElementos++;
+		}
+		else
+		{
+			ultimo.enlace = nodo;
+			ultimo = nodo;
+			numElementos++;
+		}
 	}
 
-	@Override
-	public T get(int posicion) {
-		// TODO Auto-generated method stub
+	public void vaciar()
+	{
+		inicio = null;
+		ultimo = null;
+		numElementos = 0;
+	}
+
+	public T get(int posicion) 
+	{
+		Nodo<T> nodo = inicio;
+		int i = 0;
+		while (i < posicion) 
+		{
+			nodo = nodo.enlace;
+			i++;
+		}
+		return nodo.info;
+	}
+
+	public boolean estaVacia()
+	{
+		return inicio == null;
+	}
+
+	public int indice(T elemento) 
+	{
+		Nodo<T> actual = inicio;
+		int posicion = 0;
+		while(actual.enlace != null && actual.info == elemento)
+		{
+			actual = actual.enlace;
+			posicion++;
+		}
+		return posicion;
+	}
+
+	public T[] aArray() 
+	{
 		return null;
 	}
 
-	@Override
-	public boolean estaVacia() {
-		// TODO Auto-generated method stub
+	public T eliminar(int posicion) 
+	{
+		return null;
+	}
+
+	public boolean eliminar(T elemento) 
+	{
 		return false;
 	}
 
-	@Override
-	public int indice(T elemento) {
-		// TODO Auto-generated method stub
-		return 0;
+	public T set(int posicion, T elemento)
+	{
+		Nodo<T> aux = getNodo(posicion);
+		T retornar = aux.info;
+		aux.info = elemento;
+		return retornar;
 	}
 
-	@Override
-	public T[] aArray() {
-		// TODO Auto-generated method stub
+	public int tamanno() 
+	{
+		return numElementos;
+	}
+
+	public Lista<T> sublista(int desde, int hasta) 
+	{
 		return null;
 	}
 
-	@Override
-	public T eliminar(int posicion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean eliminar(T elemento) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public T set(int posicion, T elemento) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int tamanno() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Lista<T> sublista(int desde, int hasta) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void concatenar(Lista<T> listaNueva) {
-		// TODO Auto-generated method stub
-		
+	public void concatenar(Lista<T> listaNueva) 
+	{
+		if(listaNueva instanceof ListaEnlazada)
+		{
+			ListaEnlazada<T> lista = (ListaEnlazada<T>) listaNueva;
+			ultimo.enlace = lista.inicio;
+			ultimo = lista.ultimo;
+			numElementos += lista.numElementos;
+		}
+		else if(listaNueva instanceof ArrayDinamico)
+		{
+			ArrayDinamico<T> lista = (ArrayDinamico<T>) listaNueva;
+			T [] array = lista.aArray();
+			for(int i = 0; i < array.length; i++)
+			{
+				insertar(array[i]);
+			}
+		}
 	}
 	
 }

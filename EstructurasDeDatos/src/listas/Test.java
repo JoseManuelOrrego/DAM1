@@ -7,7 +7,7 @@ public class Test {
 	public static void main(String[] args) {
 
 		ArrayDinamico<String> listaArray = new ArrayDinamico<String>();
-		//ListaEnlazada<String> listaEnlazada = new ListaEnlazada<String>();
+		ListaEnlazada<String> listaEnlazada = new ListaEnlazada<String>();
 		System.out.println("||||Insertar");
 		listaArray.insertar("---LISTA ARRAY---");
 		listaArray.insertar("Hola");
@@ -15,36 +15,36 @@ public class Test {
 		listaArray.insertar("llamo");
 		listaArray.insertar("pedro");
 		listaArray.insertar("---FIN LISTA ARRAY---");
-		//listaEnlazada.insertar("---LISTA ENLAZADA---");
-		//listaEnlazada.insertar("Pues");
-		//listaEnlazada.insertar("yo");
-		//listaEnlazada.insertar("soy");
-		//listaEnlazada.insertar("Jose");
-		//listaEnlazada.insertar("---FIN LISTA ENLAZADA---");
+		listaEnlazada.insertar("---LISTA ENLAZADA---");
+		listaEnlazada.insertar("Pues");
+		listaEnlazada.insertar("yo");
+		listaEnlazada.insertar("soy");
+		listaEnlazada.insertar("Jose");
+		listaEnlazada.insertar("---FIN LISTA ENLAZADA---");
 		mostrar(listaArray);
-		//mostrar(listaEnlazada);
+		mostrar(listaEnlazada);
 
 		System.out.println("||||Concatenar y vaciar");
-		//ListaEnlazada<String> concatenada = new ListaEnlazada<String>();
-		//concatenada.insertar("---LISTA CONCATENADA---");
-		//concatenada.concatenar(listaEnlazada);
-		//concatenada.concatenar(listaArray);
-		//concatenada.insertar("---FIN LISTA CONCATENADA---");
-		//mostrar(concatenada);
-		//concatenada.vaciar();
-		//mostrar(concatenada);
+		ListaEnlazada<String> concatenada = new ListaEnlazada<String>();
+		concatenada.insertar("---LISTA CONCATENADA---");
+		concatenada.concatenar(listaEnlazada);
+		concatenada.concatenar(listaArray);
+		concatenada.insertar("---FIN LISTA CONCATENADA---");
+		mostrar(concatenada);
+		concatenada.vaciar();
+		mostrar(concatenada);
 
 		System.out.println("||||Insertar por posicion");
 		listaArray.insertar(3, "Insertado en 3");
-		//listaEnlazada.insertar(3, "Insertado en 3");
+		listaEnlazada.insertar(3, "Insertado en 3");
 		mostrar(listaArray);
-		//mostrar(listaEnlazada);
+		mostrar(listaEnlazada);
 
 		System.out.println("||||Modificar");
 		listaArray.set(4, "Modificado el 4");
-		//listaEnlazada.set(4, "Modificado el 4");
+		listaEnlazada.set(4, "Modificado el 4");
 		mostrar(listaArray);
-		//mostrar(listaEnlazada);
+		mostrar(listaEnlazada);
 
 		System.out.println("||||Eliminar por posicion");
 		listaArray.eliminar(4);
