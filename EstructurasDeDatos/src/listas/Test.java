@@ -48,30 +48,30 @@ public class Test {
 
 		System.out.println("||||Eliminar por posicion");
 		listaArray.eliminar(4);
-		//listaEnlazada.eliminar(4);
+		listaEnlazada.eliminar(4);
 		mostrar(listaArray);
-		//mostrar(listaEnlazada);
+		mostrar(listaEnlazada);
 
 		System.out.println("||||Eliminar por elemento");
 		listaArray.eliminar("Insertado en 3");
-		//listaEnlazada.eliminar("Insertado en 3");
+		listaEnlazada.eliminar("Insertado en 3");
 		mostrar(listaArray);
-		//mostrar(listaEnlazada);
+		mostrar(listaEnlazada);
 
 		System.out.println("||||Sublistas");
 		mostrar(listaArray.sublista(0, 3));
-		//mostrar(listaEnlazada.sublista(2, 4));
+		mostrar(listaEnlazada.sublista(2, 4));
 
 		// Juega un poco con esto
 		System.out.println("||||Poblando");
 		poblar(100000, listaArray);
 		System.out.println("||||Poblada");
-		//poblar(100000, listaEnlazada);
+		poblar(100000, listaEnlazada);
 		System.out.println("||||Poblada");
-		// listaArray.concatenar(listaEnlazada);
-		// System.out.println("||||Poblada");
+		listaArray.concatenar(listaEnlazada);
+		System.out.println("||||Poblada");
 		mostrar(listaArray.sublista(3532, 3542));
-		//mostrar(listaEnlazada.sublista(3532, 3542));
+		mostrar(listaEnlazada.sublista(3532, 3542));
 	}
 
 	public static void mostrar(Lista<String> arr) {

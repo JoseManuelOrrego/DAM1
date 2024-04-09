@@ -92,7 +92,7 @@ public class ListaEnlazada<T> implements Lista<T>
 	{
 		Nodo<T> nodo = inicio;
 		int i = 0;
-		while (i < posicion) 
+		while (tieneEnlace(nodo) && i < posicion) 
 		{
 			nodo = nodo.enlace;
 			i++;
@@ -109,7 +109,7 @@ public class ListaEnlazada<T> implements Lista<T>
 	{
 		Nodo<T> actual = inicio;
 		int posicion = 0;
-		while(actual.enlace != null && actual.info == elemento)
+		while(actual != null && !actual.info.equals(elemento))
 		{
 			actual = actual.enlace;
 			posicion++;
@@ -117,19 +117,67 @@ public class ListaEnlazada<T> implements Lista<T>
 		return posicion;
 	}
 
+	@SuppressWarnings("unchecked")
 	public T[] aArray() 
 	{
-		return null;
+		Object[] array = new Object[numElementos];
+		Nodo<T> actual = inicio;
+		int i = 0;
+		while(actual != null)
+		{
+			array[i++] = actual.info;
+			actual = actual.enlace;
+		}
+		return (T[]) array;
 	}
 
 	public T eliminar(int posicion) 
 	{
-		return null;
+		if(estaVacia())
+		{
+			System.out.println("La lista esta vacia");
+			return null;
+		}
+		if(posicion <= 1)
+		{
+			if(posicion == 0)
+			{
+				Nodo<T> aDevolver = inicio;
+				inicio = inicio.enlace;
+				numElementos--;
+				return aDevolver.info;
+			}
+		}
+		Nodo<T> actual = inicio;
+		Nodo<T> anterior = actual;
+		int i = 0;
+		while (tieneEnlace(actual) && i < posicion) 
+		{
+			if(i > 0)
+			{
+				anterior = anterior.enlace;
+			}
+			actual = actual.enlace;
+			i++;
+		}
+		anterior.enlace = actual.enlace;
+		numElementos--;
+		return actual.info;
 	}
 
 	public boolean eliminar(T elemento) 
 	{
-		return false;
+		int indice = indice(elemento);
+		if(indice != -1)
+		{
+			eliminar(indice);
+			return true;
+		}
+		else
+		{
+			System.out.println("El elemento no se encuentra en la lista");
+			return false;
+		}
 	}
 
 	public T set(int posicion, T elemento)
@@ -147,7 +195,19 @@ public class ListaEnlazada<T> implements Lista<T>
 
 	public Lista<T> sublista(int desde, int hasta) 
 	{
-		return null;
+		ListaEnlazada<T> sublista = new ListaEnlazada<T>();
+		Nodo<T> actual = inicio;
+		int i = 0;
+		while(actual != null && i <= hasta)
+		{
+			if(i >= desde && i <= hasta)
+			{
+				sublista.insertar(actual.info);
+			}
+			actual = actual.enlace;
+			i++;
+		}
+		return sublista;
 	}
 
 	public void concatenar(Lista<T> listaNueva) 
@@ -155,9 +215,11 @@ public class ListaEnlazada<T> implements Lista<T>
 		if(listaNueva instanceof ListaEnlazada)
 		{
 			ListaEnlazada<T> lista = (ListaEnlazada<T>) listaNueva;
-			ultimo.enlace = lista.inicio;
-			ultimo = lista.ultimo;
-			numElementos += lista.numElementos;
+			T[] array = lista.aArray();
+			for(int i = 0; i < array.length; i++)
+			{
+				insertar(array[i]);
+			}
 		}
 		else if(listaNueva instanceof ArrayDinamico)
 		{
@@ -170,4 +232,82 @@ public class ListaEnlazada<T> implements Lista<T>
 		}
 	}
 	
+	public void insertarInicio(T elemento)
+	{
+		if(!estaVacia())
+		{
+			Nodo<T> nodo = new Nodo<T>(elemento, null);
+			nodo.enlace = inicio;
+			inicio = nodo;
+			numElementos++;
+		}
+		else
+		{
+			Nodo<T> nodo = new Nodo<T>(elemento, null);
+			inicio = nodo;
+			ultimo = nodo;
+			numElementos++;
+		}
+	}
+	public void insertarFinal(T elemento)
+	{
+		if(!estaVacia())
+		{
+			Nodo<T> nodo = new Nodo<T>(elemento, null);
+			ultimo.enlace = nodo;
+			ultimo = nodo;
+			numElementos++;
+		}
+		else
+		{
+			Nodo<T> nodo = new Nodo<T>(elemento, null);
+			inicio = nodo;
+			ultimo = nodo;
+			numElementos++;
+		}
+	}
+	public boolean contiene(T elemento)
+	{
+		boolean contiene = false;
+		Nodo<T> actual = inicio;
+		while(actual != null && !actual.info.equals(elemento))
+		{
+			actual = actual.enlace;
+			if(actual.info.equals(elemento))
+				contiene = true;
+		}
+		return contiene;
+	}
+	public T mirarInicio()
+	{
+		return inicio.info;
+	}
+	public T mirarFinal()
+	{
+		return ultimo.info;
+	}
+	public boolean eliminarInicio()
+	{
+		inicio = inicio.enlace;
+		numElementos--;
+		return true;
+	}
+	public boolean eliminarFinal()
+	{
+		Nodo<T> actual = inicio;
+		Nodo<T> anterior = actual;
+		int i = 0;
+		while (tieneEnlace(actual)) 
+		{
+			if(i > 0)
+			{
+				anterior = anterior.enlace;
+			}
+			actual = actual.enlace;
+			i++;
+		}
+		anterior.enlace = null;
+		numElementos--;
+		return true;
+	}
 }

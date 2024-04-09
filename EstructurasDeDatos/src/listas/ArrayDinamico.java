@@ -103,6 +103,7 @@ public class ArrayDinamico<T> implements Lista<T>
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public T get(int posicion) 
 	{
 		if(posicion > (array.length-1) || posicion < 0)
@@ -133,6 +134,7 @@ public class ArrayDinamico<T> implements Lista<T>
 	{
 		for(int i = 0; i < array.length; i++)
 		{
+			@SuppressWarnings("unchecked")
 			T aux = (T) array[i];
 			if(aux.equals(elemento))
 			{
@@ -142,6 +144,7 @@ public class ArrayDinamico<T> implements Lista<T>
 		return -1;
 	}
 
+	@SuppressWarnings("unchecked")
 	public T[] aArray() 
 	{
 		Object[] lista = new Object[tamanno];
@@ -163,6 +166,7 @@ public class ArrayDinamico<T> implements Lista<T>
 		{
 			if(posicion == tamanno-1)
 			{
+				@SuppressWarnings("unchecked")
 				T aux = (T) array[posicion];
 				array[posicion] = null;
 				tamanno--;
@@ -176,6 +180,7 @@ public class ArrayDinamico<T> implements Lista<T>
 			}
 			else
 			{
+				@SuppressWarnings("unchecked")
 				T aux = (T) array[posicion];
 				for(int i = 0; i < array.length-1; i++)
 				{
@@ -244,6 +249,7 @@ public class ArrayDinamico<T> implements Lista<T>
 		{
 			if(posicion >= 0 && posicion < tamanno)
 			{
+				@SuppressWarnings("unchecked")
 				T aux = (T) array[posicion];
 				array[posicion] = elemento;
 				return aux;
@@ -257,6 +263,7 @@ public class ArrayDinamico<T> implements Lista<T>
 		return tamanno;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Lista<T> sublista(int desde, int hasta)
 	{
 		ArrayDinamico<T> lista = new ArrayDinamico<T>();
@@ -269,21 +276,46 @@ public class ArrayDinamico<T> implements Lista<T>
 
 	public void concatenar(Lista<T> lista) 
 	{
-		ArrayDinamico<T> listaNueva = (ArrayDinamico<T>) lista;
-		Object [] arrayNuevo = new Object[array.length+listaNueva.array.length];
-		this.tamanno = this.tamanno + listaNueva.tamanno;
-		for(int i = 0; i < arrayNuevo.length; i++)
+		if(lista instanceof ArrayDinamico)
 		{
-			if(i <= array.length)
+			ArrayDinamico<T> listaNueva = (ArrayDinamico<T>) lista;
+			Object [] arrayNuevo = new Object[array.length+listaNueva.array.length];
+			this.tamanno = this.tamanno + listaNueva.tamanno;
+			for(int i = 0; i < arrayNuevo.length; i++)
 			{
-				arrayNuevo[i] = array[i];
+				if(i <= array.length-1)
+				{
+					arrayNuevo[i] = array[i];
+				}
+				else
+				{
+					arrayNuevo[i] = listaNueva.array[i-array.length];
+				}
 			}
-			else
-			{
-				arrayNuevo[i] = listaNueva.array[i-array.length];
-			}
+			array = arrayNuevo;
 		}
-		array = arrayNuevo;
+		else if(lista instanceof ListaEnlazada)
+		{
+			ListaEnlazada<T> listaNueva = (ListaEnlazada<T>) lista;
+			Object [] arrayLista = listaNueva.aArray();
+			Object [] arrayNuevo = new Object[array.length+arrayLista.length];
+			this.tamanno = this.tamanno + listaNueva.tamanno();
+			System.out.println(array.length);
+			System.out.println(arrayLista.length);
+			System.out.println(arrayNuevo.length);
+			for(int i = 0; i < arrayNuevo.length; i++)
+			{
+				if(i <= array.length-1)
+				{
+					arrayNuevo[i] = array[i];
+				}
+				else
+				{
+					arrayNuevo[i] = arrayLista[i-array.length];
+				}
+			}
+			array = arrayNuevo;
+		}
 	}
 	
 }
