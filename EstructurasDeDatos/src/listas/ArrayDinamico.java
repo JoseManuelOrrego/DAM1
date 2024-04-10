@@ -299,9 +299,6 @@ public class ArrayDinamico<T> implements Lista<T>
 			ListaEnlazada<T> listaNueva = (ListaEnlazada<T>) lista;
 			Object [] arrayLista = listaNueva.aArray();
 			Object [] arrayNuevo = new Object[array.length+arrayLista.length];
-			System.out.println(array.length);
-			System.out.println(arrayLista.length);
-			System.out.println(arrayNuevo.length);
 			for(int i = 0; i < (tamanno+listaNueva.tamanno()); i++)
 			{
 				if(i < tamanno)
