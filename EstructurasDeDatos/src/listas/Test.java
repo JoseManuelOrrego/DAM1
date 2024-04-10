@@ -2,10 +2,10 @@ package listas;
 
 import java.security.SecureRandom;
 
-public class Test {
-
-	public static void main(String[] args) {
-
+public class Test 
+{
+	public static void main(String[] args)
+	{
 		ArrayDinamico<String> listaArray = new ArrayDinamico<String>();
 		ListaEnlazada<String> listaEnlazada = new ListaEnlazada<String>();
 		System.out.println("||||Insertar");
@@ -74,19 +74,24 @@ public class Test {
 		mostrar(listaEnlazada.sublista(3532, 3542));
 	}
 
-	public static void mostrar(Lista<String> arr) {
-		for (int i = 0; i < arr.tamanno(); i++) {
+	public static void mostrar(Lista<String> arr)
+	{
+		for (int i = 0; i < arr.tamanno(); i++)
+		{
 			System.out.println(arr.get(i));
 		}
 	}
 
-	public static void poblar(int numElementos, Lista<String> lista) {
-		for (int i = 0; i < numElementos; i++) {
+	public static void poblar(int numElementos, Lista<String> lista) 
+	{
+		for (int i = 0; i < numElementos; i++)
+		{
 			lista.insertar(generarCadenaAleatoria(4,12));
 		}
 	}
 
-	public static String generarCadenaAleatoria(int longitudMinima, int longitudMaxima) {
+	public static String generarCadenaAleatoria(int longitudMinima, int longitudMaxima) 
+	{
 		String validos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 		SecureRandom random = new SecureRandom();
 		int longitud = random.nextInt(longitudMaxima - longitudMinima + 1) + longitudMinima;
@@ -97,5 +102,4 @@ public class Test {
 		}
 		return sb.toString();
 	}
-
 }

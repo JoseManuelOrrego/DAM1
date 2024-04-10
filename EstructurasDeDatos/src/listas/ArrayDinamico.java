@@ -74,7 +74,7 @@ public class ArrayDinamico<T> implements Lista<T>
 		{
 			int longi = (int) (array.length*1.5);
 			Object [] arrayAux = new Object[longi];
-			for(int i = 0; i < arrayAux.length; i++)
+			for(int i = 0; i <= array.length; i++)
 			{
 				if(i == (array.length))
 				{
@@ -82,8 +82,7 @@ public class ArrayDinamico<T> implements Lista<T>
 				}
 				else
 				{
-					if(i < array.length)
-						arrayAux[i] = array[i];
+					arrayAux[i] = array[i];
 				}
 			}
 			array = arrayAux;
@@ -91,7 +90,8 @@ public class ArrayDinamico<T> implements Lista<T>
 		}
 		else
 		{
-			array[tamanno++] = elemento;
+			array[tamanno] = elemento;
+			tamanno++;
 		}
 	}
 
@@ -299,22 +299,22 @@ public class ArrayDinamico<T> implements Lista<T>
 			ListaEnlazada<T> listaNueva = (ListaEnlazada<T>) lista;
 			Object [] arrayLista = listaNueva.aArray();
 			Object [] arrayNuevo = new Object[array.length+arrayLista.length];
-			this.tamanno = this.tamanno + listaNueva.tamanno();
 			System.out.println(array.length);
 			System.out.println(arrayLista.length);
 			System.out.println(arrayNuevo.length);
-			for(int i = 0; i < arrayNuevo.length; i++)
+			for(int i = 0; i < (tamanno+listaNueva.tamanno()); i++)
 			{
-				if(i <= array.length-1)
+				if(i < tamanno)
 				{
 					arrayNuevo[i] = array[i];
 				}
 				else
 				{
-					arrayNuevo[i] = arrayLista[i-array.length];
+					arrayNuevo[i] = arrayLista[(i-tamanno)];
 				}
 			}
 			array = arrayNuevo;
+			this.tamanno = this.tamanno + listaNueva.tamanno();
 		}
 	}
 	
