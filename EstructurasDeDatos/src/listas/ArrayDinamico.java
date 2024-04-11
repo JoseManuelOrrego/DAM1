@@ -276,6 +276,7 @@ public class ArrayDinamico<T> implements Lista<T>
 
 	public void concatenar(Lista<T> lista) 
 	{
+		lista.aArray();
 		if(lista instanceof ArrayDinamico)
 		{
 			ArrayDinamico<T> listaNueva = (ArrayDinamico<T>) lista;
