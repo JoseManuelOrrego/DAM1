@@ -2,12 +2,11 @@ package pruebas;
 
 import java.util.regex.Pattern;
 
-public class ElevacionExcepciones 
-{
+public class ElevacionExcepciones {
 	
-	public static void dividir (String cadena) throws NumberFormatException, ArithmeticException
-	{
-		//No os asusteis con la expresi贸n regular,
+	public static void dividir (String cadena) throws NumberFormatException,
+	ArithmeticException{
+		//No os asusteis con la expresi髇 regular,
 		//es simplemente para verificar que el numero es tipo a / b
 		if (!Pattern.matches(" *(\\d+) */ *(\\d+) *", cadena))
 			throw new NumberFormatException("Formato incorrecto");
@@ -23,29 +22,27 @@ public class ElevacionExcepciones
 	
 	
 	
-	public static void producirExcepcion(boolean producir) throws Exception 
-	{
-		System.out.println("Inicio funci贸n");
+	public static void producirExcepcion(boolean producir) throws Exception {
+		System.out.println("Inicio funci髇");
 		if(producir)
 			throw new Exception();
-		System.out.println("Fin funci贸n");
+		System.out.println("Fin funci髇");
 	}
 	
 	
-	public static void main (String[] args) throws Exception  
-	{
+	public static void main (String[] args) throws Exception  {
 		
 		System.out.println("Hola1");
 		
 		producirExcepcion(false);		
 		
-		System.out.println("Adi贸s1");
+		System.out.println("Adi髎1");
 		
 		System.out.println("Hola1");
 		
 		producirExcepcion(false);		
 		
-		System.out.println("Adi贸s1");
+		System.out.println("Adi髎1");
 		
 		
 		dividir("6/3");
