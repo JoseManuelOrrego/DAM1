@@ -1,7 +1,7 @@
 package pruebas;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
+//import java.util.regex.Pattern;
 
 public class CapturaExcepcionesDivision
 {
@@ -10,8 +10,8 @@ public class CapturaExcepcionesDivision
 	{
 		try
 		{
-			if (!Pattern.matches(" *(\\d+) */ *(\\d+) *", cadena))
-				throw new NumberFormatException("Formato incorrecto");
+			//if (!Pattern.matches(" *(\\d+) */ *(\\d+) *", cadena))
+				//throw new NumberFormatException("Formato incorrecto");
 			
 			//Esta linea divide una cadena a partir del caracter '/'
 			String[] divisores = cadena.split("/");	
@@ -29,6 +29,10 @@ public class CapturaExcepcionesDivision
 		{
 			System.out.println("No puedes dividir entre 0");
 		}
+		catch (Exception e) 
+		{
+			e.getCause();
+		}
 	}
 	
 	public static void main (String[] args) 
@@ -39,7 +43,7 @@ public class CapturaExcepcionesDivision
 		{
 			System.out.print("Introduce una division en formato 'Numero/Numero' (Introduce 'fin' para finalizar)--> ");
 			String respuesta = entrada.nextLine();
-			if(respuesta.contains("fin"))
+			if(respuesta.equals("fin"))
 			{
 				salida = true;
 			}
@@ -49,5 +53,6 @@ public class CapturaExcepcionesDivision
 			}
 		} while(!salida);	
 		System.out.println("Fin de la aplicacion");
+		entrada.close();
 	}
 }

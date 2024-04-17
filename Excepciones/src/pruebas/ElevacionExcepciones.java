@@ -4,9 +4,8 @@ import java.util.regex.Pattern;
 
 public class ElevacionExcepciones {
 	
-	public static void dividir (String cadena) throws NumberFormatException,
-	ArithmeticException{
-		//No os asusteis con la expresión regular,
+	public static void dividir (String cadena) {
+		//No os asusteis con la expresiï¿½n regular,
 		//es simplemente para verificar que el numero es tipo a / b
 		if (!Pattern.matches(" *(\\d+) */ *(\\d+) *", cadena))
 			throw new NumberFormatException("Formato incorrecto");
@@ -23,26 +22,36 @@ public class ElevacionExcepciones {
 	
 	
 	public static void producirExcepcion(boolean producir) throws Exception {
-		System.out.println("Inicio función");
+		System.out.println("Inicio funciï¿½n");
 		if(producir)
 			throw new Exception();
-		System.out.println("Fin función");
+		System.out.println("Fin funciï¿½n");
 	}
 	
 	
-	public static void main (String[] args) throws Exception  {
+	public static void main (String[] args)  {
 		
 		System.out.println("Hola1");
 		
-		producirExcepcion(false);		
+		try {
+			producirExcepcion(false);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
-		System.out.println("Adiós1");
+		System.out.println("Adiï¿½s1");
 		
 		System.out.println("Hola1");
 		
-		producirExcepcion(false);		
+		try {
+			producirExcepcion(false);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
-		System.out.println("Adiós1");
+		System.out.println("Adiï¿½s1");
 		
 		
 		dividir("6/3");
