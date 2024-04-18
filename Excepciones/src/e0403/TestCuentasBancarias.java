@@ -22,7 +22,7 @@ public class TestCuentasBancarias
 		try
 		{
 			cuentaKirby.retirar(10000);
-			cuentaKirby.retirar(17000);
+			cuentaKirby.retirar(6000);
 		}
 		catch(CantidadIncorrectaException e)
 		{
@@ -41,7 +41,7 @@ public class TestCuentasBancarias
 		
 		try
 		{
-			cuentaKirby.transferencia(cuentaYoshi, 5000);
+			cuentaKirby.transferencia(cuentaYoshi, 3000);
 		}
 		catch(CantidadIncorrectaException e)
 		{
@@ -56,6 +56,16 @@ public class TestCuentasBancarias
 			System.out.println(e.getMessage());
 		}
 		catch(CuentaBancariaException e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		cuentaYoshi = new CuentaBancaria(0, "KJEB72052");
+		try
+		{
+			cuentaKirby.transferencia(cuentaYoshi, 3000);
+		} 
+		catch (CuentaBancariaException e) 
 		{
 			System.out.println(e.getMessage());
 		}
