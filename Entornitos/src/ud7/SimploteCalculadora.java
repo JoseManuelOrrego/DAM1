@@ -17,8 +17,10 @@ public class SimploteCalculadora
 		return numA * numB;
 	}
 	
-	public double divide(double numA, double numB)
+	public Double divide(double num, double den)
 	{
-		return numA / numB;
+		if(den == 0)
+			return null;
+		return num / den;
 	}
 }

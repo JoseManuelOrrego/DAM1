@@ -58,8 +58,8 @@ class SimploteCalculadoraTest
 	}
 	
 	@Test
-	void TenDivideMinus2ShouldBeMinusFive()
+	void TenDivideZeroShouldBeNull()
 	{
-		assertEquals(-5, sc.divide(10, -2));
+		assertNull(sc.divide(10, 0));
 	}
 }
