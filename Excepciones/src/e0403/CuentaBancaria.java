@@ -1,10 +1,9 @@
 package e0403;
 
-import java.lang.invoke.StringConcatFactory;
-
 public class CuentaBancaria 
 {
 	private double saldo;
+	@SuppressWarnings("unused")
 	private String numCuenta;
 	
 	public CuentaBancaria(double saldo, String numCuenta)
