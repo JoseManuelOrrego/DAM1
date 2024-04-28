@@ -1,0 +1,4 @@
+Alumno 0: Kirby SuperStar
+Alumno 1: Mario Fontanero
+Alumno 2: Yoshi HuevoLunar
+Alumno 3: Toad Seta
