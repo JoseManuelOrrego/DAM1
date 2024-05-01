@@ -22,13 +22,13 @@ public class Baraja {
 
         if (tipoBaraja == 1) {
             for (int i = 1; i < 41; i++) {
-                lista_cartas.add(new Carta(i));
+            	lista_cartas.add(new Carta(i));
             }
         }
 
         if (tipoBaraja == 2) {
             for (int i = 1; i < 81; i++) {
-                lista_cartas.add(new Carta(i));
+            	lista_cartas.add(new Carta(i));
             }
         }
     }
@@ -38,13 +38,13 @@ public class Baraja {
 
         if (tipoBaraja == 1) {
             for (int i = 1; i < 41; i++) {
-                lista_cartas.add(new Carta(i));
+            	lista_cartas.add(new Carta(i));
             }
         }
 
         if (tipoBaraja == 2) {
             for (int i = 1; i < 81; i++) {
-                lista_cartas.add(new Carta(i));
+            	lista_cartas.add(new Carta(i));
             }
         }
 

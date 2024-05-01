@@ -16,7 +16,7 @@ public class Carta {
         this.palo=palo;
     }
 
-    public Carta(int id) throws CartaMalaExcepcion{
+    public Carta(int id){
         if (id==10 || id==20 || id==30 || id==40) {
             this.numero=10;
         }else{
@@ -31,10 +31,6 @@ public class Carta {
             this.palo=ESPADAS;
         }else if (id<=40) {
             this.palo=BASTOS;
-        }
-        else
-        {
-        	throw new CartaMalaExcepcion("Carta nula");
         }
     }
 
