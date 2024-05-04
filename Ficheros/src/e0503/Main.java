@@ -1,14 +1,10 @@
 package e0503;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -17,6 +13,7 @@ public class Main{
 	private static final String ficheroEscrituraLectura = "Alumnos.bin";
 	private static Scanner scan;
 	
+	@SuppressWarnings("serial")
 	private static class Alumno implements Serializable{
 		private String nombre;
 		private String apellido;		
@@ -55,14 +52,14 @@ public class Main{
 		case 'x':
 			return false;
 		default:
-			System.out.println("Opción no válida.");
+			System.out.println("Opcion no valida.");
 			return true;
 		}
 
 	}
 
 	public static Alumno[] crearAlumnos() {
-		System.out.print("¿Cuántos alumnos desea crear?: ");
+		System.out.print("�Cuantos alumnos desea crear?: ");
 		int numAlumnos;
 		Alumno[] alumnos = null;
 		try {
@@ -88,6 +85,7 @@ public class Main{
 		ObjectOutputStream out = null;
 		try {
 			out = new ObjectOutputStream(new FileOutputStream(ficheroEscrituraLectura));
+			out.writeInt(alumnos.length);
 			for (int i = 0; i < alumnos.length; i++) {
 				out.writeObject(alumnos[i]);
 			}
@@ -116,15 +114,16 @@ public class Main{
 		boolean excepcion = false;
 		try {
 			in = new ObjectInputStream(new FileInputStream(ficheroEscrituraLectura));
-			String linea;
-			while ((linea = in.readLine()) != null) {
-				String[] datos = linea.split(" ");
-				String nombre = datos[2];
-				String apellido = datos[3].substring(0, datos[3].length() - 1);
-				listaAlumnos.add(new Alumno(nombre, apellido));
+			int total = in.readInt();
+			for(int i = 0; i < total; i++) {
+				Alumno alumno = (Alumno) in.readObject();
+				listaAlumnos.add(alumno);
 			}
-		} catch (IOException ex) {
-			System.out.println("IOExceptional leer: " + ex.getMessage());
+		} catch (ClassNotFoundException ex) {
+			System.out.println("IOExceptional no se encontro la clase especificada: " + ex.getMessage());
+			excepcion = true;
+		} catch (IOException e) {
+			System.out.println("IOExceptional: " + e.getMessage());
 			excepcion = true;
 		} finally {
 			if (in != null) {
