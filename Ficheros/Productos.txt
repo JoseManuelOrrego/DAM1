@@ -1,0 +1,16 @@
+-------LISTA DE PRODUCTOS-------
+---------------------------------
+Nombre -> Lapiz
+Descripcion -> Utensilio
+Precio -> 2.99
+Cantidad/Stock -> 5
+---------------------------------
+Nombre -> Boligrafo
+Descripcion -> Utensilio
+Precio -> 3.99
+Cantidad/Stock -> 20
+---------------------------------
+Nombre -> Goma
+Descripcion -> Borrador
+Precio -> 1.99
+Cantidad/Stock -> 50
