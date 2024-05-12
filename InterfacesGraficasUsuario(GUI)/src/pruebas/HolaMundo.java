@@ -16,6 +16,11 @@ public class HolaMundo {
 
 class miVentana extends JFrame
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public miVentana()
 	{
 		super("Ventana");
