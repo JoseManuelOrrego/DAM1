@@ -1,0 +1,8 @@
+Nombre: Jose
+Apellido: Orrego
+Correo Electrónico: jmobejarano@gmail.com
+Contraseña: Playafimaina
+Género: Masculino
+Intereses: Música 
+Edad: 25
+Comentarios: Soy yo
